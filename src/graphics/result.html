@@ -2,18 +2,27 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<style>
-			body {
-				font-family: sans-serif;
-			}
-
-			.monospace {
-				font-family: monospace;
-			}
-		</style>
+		<link rel="stylesheet" href="./result.css" />
 		<script type="module" src="./result.ts"></script>
 	</head>
 	<body>
-		
+		<div class="info-box">
+			<div class="team-box">
+				<image class="team-logo" id="team-logo-left" onerror="this.style.display='none'"/>
+				<div class="team-name left" id="team-name-left"></div>
+			</div>
+			<div class="team-name center" id="bestOf"></div>
+			<div class="team-box">
+				<div class="team-name right" id="team-name-right"></div>
+				<image class="team-logo" id="team-logo-right" onerror="this.style.display='none'"/>
+			</div>
+		</div>
+		<div class="result-box">
+			<div class="banned-box">
+				<div class="banned topleft">
+
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
