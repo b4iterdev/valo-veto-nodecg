@@ -1,21 +1,29 @@
-import type NodeCG from '@nodecg/types';
-import type { ExampleReplicant } from '../types/schemas';
+import type NodeCG from 'nodecg/types';
+import fetch from 'node-fetch';
 
 module.exports = function (nodecg: NodeCG.ServerAPI) {
-	nodecg.log.info("Hello, from your bundle's extension!");
-	nodecg.log.info("I'm where you put all your server-side code.");
-	nodecg.log.info(
-		`To edit me, open "${__filename.replace(
-			'build/extension',
-			'src/extension',
-		)}" in your favorite text editor or IDE.`,
-	);
-	nodecg.log.info('You can use any libraries, frameworks, and tools you want. There are no limits.');
-	nodecg.log.info('Visit https://nodecg.dev for full documentation.');
-	nodecg.log.info('Good luck!');
+	const Setup = nodecg.Replicant('setup');
+	const live = nodecg.Replicant('live');
+    const result = nodecg.Replicant('result');
+    let intervalId: NodeJS.Timer;
 
-	const exampleReplicant = nodecg.Replicant('exampleReplicant') as unknown as NodeCG.ServerReplicantWithSchemaDefault<ExampleReplicant>;
-	setInterval(() => {
-		exampleReplicant.value.age++;
-	}, 5000);
+	async function fetchData(rep:any) {
+        try {
+            const response = await fetch(`${Setup.value.vetoServerUrl}/session/${Setup.value.sessionId}`);
+            const data = await response.json();
+            rep.value = data; 
+        } catch (error) {
+            nodecg.log.error('Error fetching data:', error);
+        }
+    }
+	nodecg.listenFor('getLive', () => {
+		if (intervalId) {
+            clearInterval(intervalId as NodeJS.Timeout);
+        }
+		fetchData(live);
+        intervalId = setInterval(() => fetchData(live), Setup.value.interval);
+    });
+    nodecg.listenFor('getResult', () => {
+        fetchData(result);
+    });
 };

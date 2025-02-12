@@ -23,11 +23,33 @@
   ],
   "nodecg": {
     "compatibleRange": "^2.0.0",
+    "dashboardPanels": [
+      {
+        "name": "setup-panel",
+        "title": "Setup Panel",
+        "width": 3,
+        "headerColor": "#2d4e8a",
+        "file": "setup.html"
+      },
+      {
+        "name": "get-data-panel",
+        "title": "Get Data Panel",
+        "width": 3,
+        "headerColor": "#2d4e8a",
+        "file": "get.html"
+      }
+    ],
     "graphics": [
       {
-        "file": "index.html",
+        "file": "result.html",
         "width": 1920,
         "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "live.html",
+        "width": 1640,
+        "height": 250,
         "singleInstance": false
       }
     ]
@@ -54,20 +76,22 @@
     "generate-schema-types": "trash src/types/schemas && nodecg schema-types"
   },
   "dependencies": {
+    "@types/node-fetch": "^2.6.12",
+    "node-fetch": "^3.3.2",
     "ts-node": "*"
   },
   "devDependencies": {
-    "typescript": "^5.1.3",
-    "@types/node": "^18",
     "@nodecg/types": "^2.0.0",
-    "@parcel/core": "*",
     "@parcel/config-default": "*",
+    "@parcel/core": "*",
     "@parcel/reporter-cli": "*",
     "@parcel/validator-typescript": "*",
+    "@types/node": "^18.19.75",
+    "concurrently": "*",
     "glob": "^10.2.7",
-    "trash-cli": "*",
     "nodemon": "*",
-    "concurrently": "*"
+    "trash-cli": "*",
+    "typescript": "^5.1.3"
   },
   "license": "GPL-3.0"
 }

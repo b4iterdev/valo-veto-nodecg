@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"properties": {
+		"vetoServerUrl": {
+			"type": "string"
+		},
+		"sessionId": {
+			"type": "string"
+		},
+		"interval": {
+			"type": "integer",
+			"minimum": 1
+		}
+	},
+	"additionalProperties": false
+}
