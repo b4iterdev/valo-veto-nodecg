@@ -1,0 +1,7 @@
+node_modules
+coverage
+bower_components
+.parcel-cache
+/dashboard
+/graphics
+/extension

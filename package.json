@@ -1,0 +1,73 @@
+{
+  "name": "valo-veto-nodecg",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "b4iterdev",
+    "email": "thaimeo200389@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "nodecg",
+    "valo",
+    "veto",
+    "result",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^2.0.0",
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs --all",
+    "build:extension": "node scripts/build.mjs --extension",
+    "watch": "node scripts/build.mjs --all --watch",
+    "watch:browser": "node scripts/build.mjs --dashboard --graphics --watch",
+    "watch:schemas": "node scripts/build.mjs --schemas --watch",
+    "dev": "concurrently --kill-others \"npm run watch:schemas\" \"npm run watch:browser\" \"nodemon\"",
+    "generate-schema-types": "trash src/types/schemas && nodecg schema-types"
+  },
+  "dependencies": {
+    "ts-node": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.3",
+    "@types/node": "^18",
+    "@nodecg/types": "^2.0.0",
+    "@parcel/core": "*",
+    "@parcel/config-default": "*",
+    "@parcel/reporter-cli": "*",
+    "@parcel/validator-typescript": "*",
+    "glob": "^10.2.7",
+    "trash-cli": "*",
+    "nodemon": "*",
+    "concurrently": "*"
+  },
+  "license": "GPL-3.0"
+}
