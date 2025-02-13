@@ -8,6 +8,48 @@
     <meta viewport="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="get.js"></script>
+    <style>
+        .button-1 {
+            background-color: #4b56ee;
+            border-radius: 8px;
+            border-style: none;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            height: 40px;
+            line-height: 20px;
+            list-style: none;
+            margin: 0;
+            outline: none;
+            padding: 10px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            transition: color 100ms;
+            vertical-align: baseline;
+            user-select: none;
+            -webkit-user-select: none; 
+            touch-action: manipulation;
+        }
+        .button-1:hover,
+        .button-1:focus {
+        background-color: #F082AC;
+        }
+        input[type=text] {
+            appearance: none;
+            border: none;
+            outline: none;
+            border-bottom: .2em solid #4b56ee;
+            background: rgba(#1928f0, .2);
+            border-radius: .2em .2em 0 0;
+            padding: .4em;
+            color: #4b56ee;
+        }
+    </style>
     <title>Get Data</title>
 </head>
 <body>
@@ -17,7 +59,7 @@
     <span>Interval in milliseconds (live veto):</span>
     <input type="text" id="interval" name="interval" style="width: 100px;" value="1000">
     <br>
-    <button id="get-res" onclick="getResult()">Get Result</button>
-    <button id="get-live" onclick="getLive()">Get Live Veto</button>
+    <button id="get-res" class="button-1" onclick="getResult()">Get Result</button>
+    <button id="get-live" class="button-1" onclick="getLive()">Get Live Veto</button>
 </body>
 </html>
