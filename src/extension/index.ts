@@ -7,9 +7,14 @@ module.exports = function (nodecg: NodeCG.ServerAPI) {
     const result = nodecg.Replicant('result');
     let intervalId: NodeJS.Timer;
 
-	async function fetchData(rep:any) {
+	async function fetchData(rep:any,type:boolean) {
         try {
-            const response = await fetch(`${Setup.value.vetoServerUrl}/session/${Setup.value.sessionId}`);
+            let response;
+            if (type) {
+                response = await fetch(`${Setup.value.vetoServerUrl}/result/${Setup.value.sessionId}`);
+            } else {
+                response = await fetch(`${Setup.value.vetoServerUrl}/session/${Setup.value.sessionId}`);
+            }
             const data = await response.json();
             rep.value = data; 
         } catch (error) {
@@ -20,10 +25,10 @@ module.exports = function (nodecg: NodeCG.ServerAPI) {
 		if (intervalId) {
             clearInterval(intervalId as NodeJS.Timeout);
         }
-		fetchData(live);
-        intervalId = setInterval(() => fetchData(live), Setup.value.interval);
+		fetchData(live,false);
+        intervalId = setInterval(() => fetchData(live,false), Setup.value.interval);
     });
     nodecg.listenFor('getResult', () => {
-        fetchData(result);
+        fetchData(result,true);
     });
 };
