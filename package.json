@@ -1,12 +1,12 @@
 {
   "name": "valo-veto-nodecg",
-  "version": "0.0.0",
-  "description": "",
-  "homepage": "",
+  "version": "1.0.0",
+  "description": "NodeCG template for valo-map-veto display",
+  "homepage": "https://github.com/b4iterdev/valo-veto-nodecg.git",
   "author": {
     "name": "b4iterdev",
     "email": "thaimeo200389@gmail.com",
-    "url": ""
+    "url": "https://linktr.ee/b4iterdev"
   },
   "files": [
     "dashboard",
