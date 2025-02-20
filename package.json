@@ -78,6 +78,7 @@
   "dependencies": {
     "@types/node-fetch": "^2.6.12",
     "node-fetch": "^3.3.2",
+    "nodecg": "^2.5.3",
     "ts-node": "*"
   },
   "devDependencies": {
